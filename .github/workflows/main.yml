@@ -1,13 +1,25 @@
-name: Django-app workflow
+name: Django-app workflow infra_actions
 
 on: [push]
 
 jobs:
+  send_message_start:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: send message start test
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: ${{ github.workflow }} Получен на Git Hub, приступаем к тестам! 
+
   tests:
     # «Раннер» — создание изолированного окружения с последней версией Ubuntu 
     runs-on: ubuntu-latest
 
     steps:
+    needs: send_message_start
     # Запуск actions checkout — готового скрипта 
     # для клонирования репозитория
     - uses: actions/checkout@v2
