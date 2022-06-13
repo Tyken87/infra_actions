@@ -8,5 +8,6 @@ def index(request):
 def second_page(request):
     return HttpResponse('А это вторая страница!')
 
+
 def mariya(request):
     return HttpResponse('Ну вот, пока ты стояла, я внёс изменения в сайт! :)')
