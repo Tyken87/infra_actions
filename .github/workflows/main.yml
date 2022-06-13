@@ -17,9 +17,8 @@ jobs:
   tests:
     # «Раннер» — создание изолированного окружения с последней версией Ubuntu 
     runs-on: ubuntu-latest
-
-    steps:
     needs: send_message_start
+    steps:
     # Запуск actions checkout — готового скрипта 
     # для клонирования репозитория
     - uses: actions/checkout@v2
